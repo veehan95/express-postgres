@@ -74,3 +74,9 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+# Not needed for framework constructon
+./src/database/*
+./src/database/*.*
+./src/restPoint/*
+./src/restPoint/*.*

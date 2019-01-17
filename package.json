@@ -1,0 +1,21 @@
+{
+  "name": "express-postgres",
+  "version": "1.0.0",
+  "description": "Simple restful framework from epress to postgres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo not available yt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "-"
+  },
+  "keywords": [
+    "restful",
+    "reastApi",
+    "express",
+    "postgres"
+  ],
+  "author": "Tan Vee Han (veehan.95@gmail.com)",
+  "license": "MIT"
+}
