@@ -76,14 +76,14 @@ typings/
 .fusebox/
 
 # Not needed for framework constructon
-./src/database/*
-./src/database/*.*
-./src/restPoint/*
-./src/restPoint/*.*
+src/database/*
+src/database/*.*
+src/restPoint/*
+src/restPoint/*.*
 
 # Not needed for npm publish
-./test
+test
 
 #should run by contributors themselves
-./dist/*.*
-./dist/*
+dist/*.*
+dist/*
