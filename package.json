@@ -4,9 +4,10 @@
   "description": "Simple restful framework from epress to postgres",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel src/util/cli/index.js --out-dir dist",
+    "build": "./node_modules/.bin/babel ./src --out-dir ./dist --copy-files",
+    "dev": "npm run build & npm start",
     "test": "echo not available yt",
-    "start": "node dist/index.js"
+    "start": "node dist/util/cli/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,16 @@
     "@babel/preset-env": "^7.2.3"
   },
   "dependencies": {
+    "module-alias": "^2.1.0",
     "pg": "^7.8.0",
     "pino": "^5.10.8",
-    "pino-pretty": "^2.5.0"
+    "pino-pretty": "^2.5.0",
+    "pino-pretty-express": "^1.0.4"
+  },
+  "_moduleAliases": {
+    "@config": "dist/config/",
+    "@epTools": "dist/util/tool/index.js",
+    "@message": "dist/util/message/",
+    "@root": "dist"
   }
 }

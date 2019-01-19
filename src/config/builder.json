@@ -1,0 +1,6 @@
+{
+  "directory": {
+    "database": "src/database",
+    "express": "src/express"
+  }
+}
