@@ -80,3 +80,7 @@ typings/
 ./src/database/*.*
 ./src/restPoint/*
 ./src/restPoint/*.*
+
+#should run by contributors themselves
+./dist/*.*
+./dist/*

@@ -83,3 +83,7 @@ typings/
 
 # Not needed for npm publish
 ./test
+
+#should run by contributors themselves
+./dist/*.*
+./dist/*
