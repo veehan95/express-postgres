@@ -1,25 +1,71 @@
 'use strict'
 import 'module-alias/register'
-import { default as builderJson } from "@config/builder.json"
+import "@babel/polyfill"
+import { default as config } from "@config/config.json"
+import { timestamper } from '@epTools'
 
-const messageBuilder = (intent_, scriptName_) => {
-  return `${scriptName_} has been created in ${builderJson.directory[intent_]}`
+const createTable = (intentDict, objName) => {
+  const a = 1
+  return new Promise((resolve, reject) => {
+    if (false) reject(new Error('done'))
+
+    let action, target
+    ({action, target} = intentDict)
+    resolve([`${action}${target}`, scriptNamer(action, target, objName)])
+  })
 }
 
-export default class ScriptBuilder {
-
-  create(intent_, scriptName_) {
-    let intent
-    switch (intent_.toLowerCase()) {
-      case 'database':
-        intent = 'database'
-        break
-      default:
-        throw new Error("Unkown intent")
-    }
-    if (scriptName_ === undefined || scriptName_.length <= 0) throw new Error("Invalid script name")
-
-    return messageBuilder(intent_, scriptName_)
+/**
+ * @function intentBreaker
+ * @param {dictionary<string>} intent - all relevent informations of intent
+ * @return directory of script, action, target
+ */
+const intentBreaker = (intent_) => {
+  switch (intent_.target.toLowerCase()) {
+    case 'table':
+      return {action: 'alter', target: 'table'}
+    case 'database':
+      return {action: 'alter', target: 'database'}
+    default:
+      throw new Error("Unkown intent")
   }
+}
 
+/**
+ * @function messageBuilder
+ * @param {string} directory_ - directory where script created
+ * @param {string} scriptName_ - name of script created
+ * @return crteate status message
+ */
+const messageBuilder = (directory_, scriptName_) =>
+  `${scriptName_} has been created in ${directory_}`
+
+/**
+ * @function scriptNamer
+ * @param {string} scriptName_ - name of script to create
+ * @return the name of script to be created
+ */
+const scriptNamer = (action, target, name) => {
+  if (name === undefined || name.length <= 0) {
+    throw new Error("Missing script name")
+  }
+  return timestamper.attach(`${action}_${target}_${name}`, config.scriptNaming)
+}
+
+/**
+ * @class scriptBuilder
+ * @description the exported class to build scripts
+ */
+export default class ScriptBuilder {
+  /**
+   * @functions create
+   * @param {object<string>} intent_ - all information related to intent
+   * @param {string} scriptName_ - name of script
+   * @return create status
+   */
+  create(args) {
+    return createTable({action: args[0], target: args[1]}, args[2])
+      .then(resolved => messageBuilder(resolved[0], resolved[1]))
+      .catch(err => { throw err })
+  }
 }

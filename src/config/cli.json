@@ -1,0 +1,18 @@
+{
+  "g|generate": {
+    "function": "generate",
+    "post": {
+      "a|alter": {
+        "description": "Generates required scripts",
+        "function": "alter",
+        "post": { "name": { "function": "name" } }
+      },
+      "c|create": {
+        "function": "create",
+        "post": { "name": { "function": "name" } }
+      }
+    }
+  },
+  "h|help": { "function": "help" },
+  "m|migrate": { "function": "migrate" }
+}

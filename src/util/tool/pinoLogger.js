@@ -1,8 +1,8 @@
 'use strict'
 import { default as pinoLib } from 'pino'
-import { default as pinoSetting } from '@config/logger.json'
+import { default as config } from '@config/config.json'
 
-const pino = pinoLib(pinoSetting)
+const pino = pinoLib(config.pinoSetting)
 
 export default class Pino {
 

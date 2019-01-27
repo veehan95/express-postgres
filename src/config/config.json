@@ -1,0 +1,15 @@
+{
+  "database": {
+    "directory": "src/database"
+  },
+  "restPoint": {
+    "directory": "src/restpoint"
+  },
+  "scriptNaming": {
+    "position": "pre",
+    "seperator": "_"
+  },
+  "pinoSetting": {
+    "prettyPrint": true
+  }
+}
